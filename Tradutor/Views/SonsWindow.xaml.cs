@@ -1,5 +1,5 @@
-﻿using System.Diagnostics;
-using System.Runtime.InteropServices;
+﻿using NAudio.CoreAudioApi;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -7,9 +7,9 @@ namespace Tradutor.Views
 {
     public partial class SonsWindow : Window
     {
-        // API nativa do Windows para controlar o volume
-        [DllImport("winmm.dll")]
-        private static extern int waveOutSetVolume(IntPtr hwo, uint dwVolume);
+        private readonly MMDeviceEnumerator _enumerador = new MMDeviceEnumerator();
+        private MMDevice? _dispositivoPrincipal;
+        private bool _carregando = true;
 
         public SonsWindow()
         {
@@ -17,52 +17,100 @@ namespace Tradutor.Views
             CarregarVolumeAtual();
         }
 
+        // ─── VOLUME ────────────────────────────────────────────────
+
         private void CarregarVolumeAtual()
         {
-            // Tenta ler o volume atual do sistema para iniciar o slider no valor certo
             try
             {
-                var proc = new Process
-                {
-                    StartInfo = new ProcessStartInfo
-                    {
-                        FileName = "powershell",
-                        Arguments = "-Command \"(Get-AudioDevice -Playback).Volume\"",
-                        RedirectStandardOutput = true,
-                        UseShellExecute = false,
-                        CreateNoWindow = true
-                    }
-                };
-                // Deixamos o slider no valor padrão 50 — sem dependência externa
+                _dispositivoPrincipal = _enumerador.GetDefaultAudioEndpoint(
+                    DataFlow.Render, Role.Multimedia);
+
+                // Lê o volume atual do sistema (0.0 a 1.0) e converte para 0-100
+                float volumeAtual = _dispositivoPrincipal.AudioEndpointVolume.MasterVolumeLevelScalar;
+                SliderVolume.Value = Math.Round(volumeAtual * 100);
+
+                bool silenciado = _dispositivoPrincipal.AudioEndpointVolume.Mute;
+                if (silenciado)
+                    LblVolume.Text = "🔇 Silenciado";
+                else
+                    LblVolume.Text = $"Volume atual: {(int)SliderVolume.Value}%";
+            }
+            catch
+            {
+                LblVolume.Text = "Não foi possível ler o volume";
+            }
+            finally
+            {
+                _carregando = false;
+            }
+        }
+
+        private void SliderVolume_ValueChanged(object sender,
+            RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (_carregando || LblVolume == null) return;
+
+            try
+            {
+                int volume = (int)SliderVolume.Value;
+                LblVolume.Text = $"Volume atual: {volume}%";
+
+                // Define o volume mestre real do Windows
+                _dispositivoPrincipal = _enumerador.GetDefaultAudioEndpoint(
+                    DataFlow.Render, Role.Multimedia);
+                _dispositivoPrincipal.AudioEndpointVolume.MasterVolumeLevelScalar =
+                    volume / 100f;
+
+                // Se estava silenciado, dessilencia automaticamente
+                if (_dispositivoPrincipal.AudioEndpointVolume.Mute)
+                    _dispositivoPrincipal.AudioEndpointVolume.Mute = false;
             }
             catch { }
         }
 
-        private void SliderVolume_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            if (LblVolume == null) return;
-
-            int volume = (int)SliderVolume.Value;
-            LblVolume.Text = $"Volume atual: {volume}%";
-
-            // Converte para o formato da API do Windows (0 a 65535 em cada canal)
-            uint valor = (uint)(volume * 65535 / 100);
-            uint volumeWindows = valor | (valor << 16);
-            waveOutSetVolume(IntPtr.Zero, volumeWindows);
-        }
-
         private void Silenciar_Click(object sender, RoutedEventArgs e)
         {
-            SliderVolume.Value = 0;
-            waveOutSetVolume(IntPtr.Zero, 0);
-            MessageBox.Show("🔇 Computador silenciado!\n\nMova o controle de volume para ouvir novamente.",
-                "Som desativado", MessageBoxButton.OK, MessageBoxImage.Information);
+            try
+            {
+                _dispositivoPrincipal = _enumerador.GetDefaultAudioEndpoint(
+                    DataFlow.Render, Role.Multimedia);
+
+                bool jaSilenciado = _dispositivoPrincipal.AudioEndpointVolume.Mute;
+
+                if (jaSilenciado)
+                {
+                    // Se já está silenciado, dessilencia
+                    _dispositivoPrincipal.AudioEndpointVolume.Mute = false;
+                    LblVolume.Text = $"Volume atual: {(int)SliderVolume.Value}%";
+                    MessageBox.Show(
+                        "🔊 Som reativado!\n\nSeu computador voltará a emitir sons normalmente.",
+                        "Som Reativado", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    // Silencia
+                    _dispositivoPrincipal.AudioEndpointVolume.Mute = true;
+                    LblVolume.Text = "🔇 Silenciado";
+                    MessageBox.Show(
+                        "🔇 Computador silenciado!\n\nClique novamente em 'Silenciar' para reativar o som.",
+                        "Som Desativado", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
+            catch
+            {
+                MessageBox.Show(
+                    "Não foi possível alterar o som.\nTente ajustar pelo controle de volume do Windows.",
+                    "Erro", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
+
+        // ─── DEMAIS FUNÇÕES ────────────────────────────────────────
 
         private void AbrirMixer_Click(object sender, RoutedEventArgs e)
         {
-            // Abre o mixer de volume do Windows
-            Process.Start(new ProcessStartInfo("sndvol.exe") { UseShellExecute = true });
+            Process.Start(new ProcessStartInfo("sndvol.exe")
+            { UseShellExecute = true });
         }
 
         private void ConfigurarNotificacoes_Click(object sender, RoutedEventArgs e)
@@ -73,8 +121,8 @@ namespace Tradutor.Views
 
         private void TrocarEsquema_Click(object sender, RoutedEventArgs e)
         {
-            // Abre o painel clássico de sons do Windows
-            Process.Start(new ProcessStartInfo("mmsys.cpl") { UseShellExecute = true });
+            Process.Start(new ProcessStartInfo("mmsys.cpl")
+            { UseShellExecute = true });
         }
 
         private void DesativarSons_Click(object sender, RoutedEventArgs e)
@@ -86,17 +134,21 @@ namespace Tradutor.Views
 
             if (resposta == MessageBoxResult.Yes)
             {
-                // Define o esquema de sons como "Sem Sons" via PowerShell
                 Process.Start(new ProcessStartInfo
                 {
                     FileName = "powershell",
-                    Arguments = "-Command \"Set-ItemProperty -Path 'HKCU:\\AppEvents\\Schemes' -Name '(Default)' -Value '.None'\"",
+                    Arguments = "-Command \"Set-ItemProperty -Path " +
+                                "'HKCU:\\AppEvents\\Schemes' " +
+                                "-Name '(Default)' -Value '.None'\"",
                     UseShellExecute = false,
                     CreateNoWindow = true
                 });
 
-                MessageBox.Show("🔕 Todos os sons do Windows foram desativados!",
-                    "Sons desativados", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(
+                    "🔕 Todos os sons do Windows foram desativados!\n\n" +
+                    "Para reativar, clique em 'Trocar Esquema de Sons' e\n" +
+                    "escolha um esquema na lista.",
+                    "Sons Desativados", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 
@@ -104,6 +156,14 @@ namespace Tradutor.Views
         {
             Process.Start(new ProcessStartInfo("ms-settings:sound")
             { UseShellExecute = true });
+        }
+
+        // Libera recursos ao fechar
+        protected override void OnClosed(EventArgs e)
+        {
+            _dispositivoPrincipal?.Dispose();
+            _enumerador.Dispose();
+            base.OnClosed(e);
         }
     }
 }

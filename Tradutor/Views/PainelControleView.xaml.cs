@@ -13,12 +13,14 @@ namespace Tradutor.Views
 
         private void AbrirNomePC_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start("SystemPropertiesComputerName.exe");
+            Process.Start(new ProcessStartInfo("SystemPropertiesComputerName.exe")
+            { UseShellExecute = true });
         }
 
         private void AbrirDesempenho_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start(new ProcessStartInfo("ms-settings:about") { UseShellExecute = true });
+            var janela = new PecasMaquinaWindow();
+            janela.ShowDialog();
         }
 
         private void AbrirDataHora_Click(object sender, RoutedEventArgs e)

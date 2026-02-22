@@ -1,0 +1,64 @@
+﻿<Window x:Class="Tradutor.Views.PecasMaquinaWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="🖥️ Peças da sua Máquina"
+        Height="620" Width="700"
+        WindowStartupLocation="CenterScreen"
+        Background="#F0F4F8"
+        ResizeMode="NoResize">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="65"/>
+        </Grid.RowDefinitions>
+
+        <!-- Cabeçalho -->
+        <Border Grid.Row="0" Background="#1E3A5F">
+            <StackPanel VerticalAlignment="Center" Margin="25,0">
+                <TextBlock Text="🖥️ Peças da sua Máquina"
+                       FontSize="20" FontWeight="Bold" Foreground="White"/>
+                <TextBlock Text="Conheça o que está dentro do seu computador"
+                       FontSize="11" Foreground="#A8C4E0"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Status de carregamento -->
+        <Border Grid.Row="1" Background="#E8F0F8" Padding="15,10">
+            <StackPanel>
+                <TextBlock x:Name="LblStatus"
+                       Text="🔍 Lendo as informações do seu computador..."
+                       FontSize="12" Foreground="#1E3A5F"/>
+                <ProgressBar x:Name="BarraProgresso"
+                         Height="6" Margin="0,6,0,0"
+                         IsIndeterminate="True"
+                         Background="#DDD"
+                         Foreground="#1E3A5F"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Conteúdo -->
+        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+            <StackPanel x:Name="PainelPecas" Margin="25,20"/>
+        </ScrollViewer>
+
+        <!-- Rodapé com botões -->
+        <Border Grid.Row="3" Background="White" Padding="15,0">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="8" ShadowDepth="-2" Opacity="0.08"/>
+            </Border.Effect>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <Button Content="📋  Copiar Todas as Informações" Width="240" Height="38"
+                    Style="{StaticResource CardButtonStyle}"
+                    Click="CopiarInformacoes_Click" Margin="0,0,10,0"/>
+                <TextBlock Text="Útil para mostrar a um técnico ou familiar que possa ajudar."
+                       FontSize="11" Foreground="#888"
+                       VerticalAlignment="Center" TextWrapping="Wrap"
+                       Width="340"/>
+            </StackPanel>
+        </Border>
+    </Grid> 
+    
+</Window>

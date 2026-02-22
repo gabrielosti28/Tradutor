@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using Microsoft.Win32;
+using System.Diagnostics;
 using System.Windows;
 
 namespace Tradutor
@@ -13,19 +14,31 @@ namespace Tradutor
 
         private void MostrarVersaoAtual()
         {
-            var versao = Environment.OSVersion.Version;
-            string nomeVersao = versao.Major switch
+            try
             {
-                6 when versao.Minor == 1 => "Windows 7",
-                6 when versao.Minor == 2 => "Windows 8",
-                6 when versao.Minor == 3 => "Windows 8.1",
-                _ => $"Windows (versão {versao.Major}.{versao.Minor})"
-            };
+                // Lê o nome real do Windows direto do registro
+                string? nomeWindows = Registry.GetValue(
+                    @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion",
+                    "ProductName", null) as string;
 
-            LblVersaoAtual.Text = $"Versão detectada no seu computador: {nomeVersao}";
+                string? build = Registry.GetValue(
+                    @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion",
+                    "CurrentBuildNumber", null) as string;
+
+                string descricao = nomeWindows ?? "Windows (versão desconhecida)";
+                if (!string.IsNullOrEmpty(build))
+                    descricao += $" (Build {build})";
+
+                LblVersaoAtual.Text = $"Versão detectada no seu computador: {descricao}";
+            }
+            catch
+            {
+                LblVersaoAtual.Text = "Não foi possível identificar a versão do Windows.";
+            }
         }
 
-        private void AtualizarWindows10_Click(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void AtualizarWindows10_Click(object sender,
+            System.Windows.Input.MouseButtonEventArgs e)
         {
             MessageBox.Show(
                 "Vou abrir o site oficial da Microsoft para você.\n\n" +
@@ -42,7 +55,8 @@ namespace Tradutor
             { UseShellExecute = true });
         }
 
-        private void AtualizarWindows11_Click(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void AtualizarWindows11_Click(object sender,
+            System.Windows.Input.MouseButtonEventArgs e)
         {
             MessageBox.Show(
                 "Vou abrir o site oficial da Microsoft para você.\n\n" +
@@ -60,7 +74,8 @@ namespace Tradutor
             { UseShellExecute = true });
         }
 
-        private void VerificarCompatibilidade_Click(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void VerificarCompatibilidade_Click(object sender,
+            System.Windows.Input.MouseButtonEventArgs e)
         {
             MessageBox.Show(
                 "Vou abrir a ferramenta oficial da Microsoft chamada\n" +

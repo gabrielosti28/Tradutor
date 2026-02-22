@@ -54,10 +54,16 @@ namespace Tradutor.Views
                 // Traduz nomes em inglês para português
                 nome = nome switch
                 {
+                    // Inglês
                     "Balanced" => "Balanceado ⚖️",
                     "Power saver" => "Econômico 🌿",
                     "High performance" => "Alto Desempenho 🚀",
                     "Ultimate Performance" => "Desempenho Máximo 🏆",
+                    // Português
+                    "Equilibrado" => "Balanceado ⚖️",
+                    "Economia de energia" => "Econômico 🌿",
+                    "Alto desempenho" => "Alto Desempenho 🚀",
+                    "Desempenho máximo" => "Desempenho Máximo 🏆",
                     _ => nome
                 };
 
