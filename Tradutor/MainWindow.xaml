@@ -1,0 +1,68 @@
+﻿<Window x:Class="Tradutor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Tradutor do Computador" Height="650" Width="950"
+        WindowStartupLocation="CenterScreen"
+        Background="#F0F4F8">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Cabeçalho -->
+        <Border Grid.Row="0" Background="#1E3A5F">
+            <StackPanel VerticalAlignment="Center" Margin="30,0">
+                <TextBlock Text="💻 Tradutor do Computador"
+                           FontSize="24" FontWeight="Bold"
+                           Foreground="White"/>
+                <TextBlock Text="Entenda e controle seu computador de forma simples"
+                           FontSize="12" Foreground="#A8C4E0"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Área principal: menu lateral + conteúdo -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Menu Lateral -->
+            <Border Grid.Column="0" Background="#162D4A">
+                <StackPanel Margin="0,20,0,0">
+                    <TextBlock Text="MÓDULOS" Foreground="#6B8CAE"
+                               FontSize="11" FontWeight="Bold"
+                               Margin="20,0,0,10"/>
+
+                    <Button x:Name="BtnPainelControle"
+                            Content="🏠  Painel de Controle"
+                            Style="{StaticResource MenuButtonStyle}"
+                            Click="BtnPainelControle_Click"/>
+
+                    <Button x:Name="BtnDrivers"
+                            Content="🔧  Drivers"
+                            Style="{StaticResource MenuButtonStyle}"
+                            Click="BtnDrivers_Click"/>
+
+                    <Button x:Name="BtnImpressoras"
+                            Content="🖨️  Impressoras"
+                            Style="{StaticResource MenuButtonStyle}"
+                            Click="BtnImpressoras_Click"/>
+
+                    <Button x:Name="BtnTerminal"
+                            Content="⌨️  Terminal Fácil"
+                            Style="{StaticResource MenuButtonStyle}"
+                            Click="BtnTerminal_Click"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Área de Conteúdo -->
+            <Border Grid.Column="1" x:Name="AreaConteudo"
+                    Background="#F0F4F8" Padding="20">
+                <ContentControl x:Name="ConteudoPrincipal"/>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>
