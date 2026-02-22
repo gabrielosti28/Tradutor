@@ -15,7 +15,7 @@
             <WrapPanel>
 
                 <!-- Cartão: Nome do Computador -->
-                <Border Style="{StaticResource CardStyle}" Tag="NomePC">
+                <Border Style="{StaticResource CardStyle}" Tag="NomePC" Height="200">
                     <Border.InputBindings>
                         <MouseBinding MouseAction="LeftClick" Command="{x:Null}"/>
                     </Border.InputBindings>
@@ -24,18 +24,18 @@
                         <TextBlock Text="Nome do Computador"
                                    FontSize="14" FontWeight="Bold"
                                    HorizontalAlignment="Center"
-                                   Foreground="#1E3A5F" Margin="0,8,0,4"/>
+                                   Foreground="#1E3A5F" Margin="0,8,0,4" Width="131"/>
                         <TextBlock Text="Veja e altere como seu computador é identificado na rede"
                                    FontSize="11" Foreground="#666"
-                                   TextAlignment="Center" TextWrapping="Wrap"/>
+                                   TextAlignment="Center" TextWrapping="Wrap" Height="45"/>
                         <Button Content="Abrir" Margin="0,12,0,0"
                                 Style="{StaticResource CardButtonStyle}"
-                                Click="AbrirNomePC_Click"/>
+                                Click="AbrirNomePC_Click" Height="27"/>
                     </StackPanel>
                 </Border>
 
                 <!-- Cartão: Desempenho -->
-                <Border Style="{StaticResource CardStyle}">
+                <Border Style="{StaticResource CardStyle}" Height="195">
                     <StackPanel>
                         <TextBlock Text="⚡" FontSize="32" HorizontalAlignment="Center"/>
                         <TextBlock Text="Peças da máquina"
@@ -52,7 +52,7 @@
                 </Border>
 
                 <!-- Cartão: Data e Hora -->
-                <Border Style="{StaticResource CardStyle}">
+                <Border Style="{StaticResource CardStyle}" Height="193">
                     <StackPanel>
                         <TextBlock Text="🕐" FontSize="32" HorizontalAlignment="Center"/>
                         <TextBlock Text="Data e Hora"
@@ -69,7 +69,7 @@
                 </Border>
 
                 <!-- Cartão: Programas Instalados -->
-                <Border Style="{StaticResource CardStyle}">
+                <Border Style="{StaticResource CardStyle}" Height="195">
                     <StackPanel>
                         <TextBlock Text="📦" FontSize="32" HorizontalAlignment="Center"/>
                         <TextBlock Text="Programas Instalados"
@@ -86,7 +86,7 @@
                 </Border>
 
                 <!-- Cartão: Windows Update -->
-                <Border Style="{StaticResource CardStyle}">
+                <Border Style="{StaticResource CardStyle}" Height="195">
                     <StackPanel>
                         <TextBlock Text="🔄" FontSize="32" HorizontalAlignment="Center"/>
                         <TextBlock Text="Atualizações"
@@ -103,19 +103,18 @@
                 </Border>
 
                 <!-- Cartão: Rede e Internet -->
-                <Border Style="{StaticResource CardStyle}">
+                <Border Style="{StaticResource CardStyle}" Height="195">
                     <StackPanel>
                         <TextBlock Text="🌐" FontSize="32" HorizontalAlignment="Center"/>
                         <TextBlock Text="Rede e Internet"
                                    FontSize="14" FontWeight="Bold"
-                                   HorizontalAlignment="Center"
-                                   Foreground="#1E3A5F" Margin="0,8,0,4"/>
+                                   Foreground="#1E3A5F" Width="106"/>
                         <TextBlock Text="Veja sua conexão Wi-Fi ou cabo e resolva problemas de internet"
                                    FontSize="11" Foreground="#666"
-                                   TextAlignment="Center" TextWrapping="Wrap"/>
+                                   TextAlignment="Center" TextWrapping="Wrap" Height="43"/>
                         <Button Content="Abrir" Margin="0,12,0,0"
                                 Style="{StaticResource CardButtonStyle}"
-                                Click="AbrirRede_Click"/>
+                                Click="AbrirRede_Click" Height="27"/>
                     </StackPanel>
                 </Border>
 
