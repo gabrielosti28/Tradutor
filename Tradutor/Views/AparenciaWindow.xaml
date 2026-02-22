@@ -1,0 +1,118 @@
+﻿<Window x:Class="Tradutor.Views.AparenciaWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="🎨 Aparência do Computador"
+        Height="520" Width="680"
+        WindowStartupLocation="CenterScreen"
+        Background="#F0F4F8"
+        ResizeMode="NoResize">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Cabeçalho -->
+        <Border Grid.Row="0" Background="#1E3A5F">
+            <StackPanel VerticalAlignment="Center" Margin="25,0">
+                <TextBlock Text="🎨 Aparência"
+                           FontSize="20" FontWeight="Bold" Foreground="White"/>
+                <TextBlock Text="Deixe seu computador com a sua cara"
+                           FontSize="11" Foreground="#A8C4E0"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Conteúdo -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel Margin="25,20">
+
+                <!-- SEÇÃO: Modo de Cor -->
+                <TextBlock Text="🌓 Modo Claro ou Escuro"
+                           FontSize="15" FontWeight="Bold"
+                           Foreground="#1E3A5F" Margin="0,0,0,5"/>
+                <TextBlock TextWrapping="Wrap" Foreground="#555" FontSize="12" Margin="0,0,0,12">
+                    O modo escuro deixa o fundo das telas preto ou cinza escuro — 
+                    é mais suave para os olhos à noite. O modo claro tem fundo branco, 
+                    ideal para usar com luz natural.
+                </TextBlock>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+                    <Button Content="☀️  Ativar Modo Claro" Width="180" Height="38"
+                            Style="{StaticResource CardButtonStyle}"
+                            Click="AtivarModoClaro_Click" Margin="0,0,10,0"/>
+                    <Button Content="🌙  Ativar Modo Escuro" Width="180" Height="38"
+                            Style="{StaticResource CardButtonStyle}"
+                            Click="AtivarModoEscuro_Click"/>
+                </StackPanel>
+
+                <Separator Background="#DDD" Margin="0,0,0,20"/>
+
+                <!-- SEÇÃO: Papel de Parede -->
+                <TextBlock Text="🖼️ Papel de Parede"
+                           FontSize="15" FontWeight="Bold"
+                           Foreground="#1E3A5F" Margin="0,0,0,5"/>
+                <TextBlock TextWrapping="Wrap" Foreground="#555" FontSize="12" Margin="0,0,0,12">
+                    O papel de parede é a imagem que aparece na tela quando você não está 
+                    usando nenhum programa. Você pode trocar por uma foto sua, da família, 
+                    ou qualquer imagem que gostar.
+                </TextBlock>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+                    <Button Content="🖼️  Trocar Papel de Parede" Width="210" Height="38"
+                            Style="{StaticResource CardButtonStyle}"
+                            Click="TrocarPapelParede_Click" Margin="0,0,10,0"/>
+                    <Button Content="🎠  Ver Slideshow de Fotos" Width="210" Height="38"
+                            Style="{StaticResource CardButtonStyle}"
+                            Click="AbrirSlideshow_Click"/>
+                </StackPanel>
+
+                <Separator Background="#DDD" Margin="0,0,0,20"/>
+
+                <!-- SEÇÃO: Cores -->
+                <TextBlock Text="🎨 Cor de Destaque"
+                           FontSize="15" FontWeight="Bold"
+                           Foreground="#1E3A5F" Margin="0,0,0,5"/>
+                <TextBlock TextWrapping="Wrap" Foreground="#555" FontSize="12" Margin="0,0,0,12">
+                    A cor de destaque aparece na barra de tarefas, nos botões e em outros 
+                    elementos do Windows. Escolha a cor que mais combina com você!
+                </TextBlock>
+                <Button Content="🎨  Escolher Cor de Destaque" Width="210" Height="38"
+                        HorizontalAlignment="Left"
+                        Style="{StaticResource CardButtonStyle}"
+                        Click="EscolherCor_Click" Margin="0,0,0,20"/>
+
+                <Separator Background="#DDD" Margin="0,0,0,20"/>
+
+                <!-- SEÇÃO: Temas -->
+                <TextBlock Text="🖌️ Temas"
+                           FontSize="15" FontWeight="Bold"
+                           Foreground="#1E3A5F" Margin="0,0,0,5"/>
+                <TextBlock TextWrapping="Wrap" Foreground="#555" FontSize="12" Margin="0,0,0,12">
+                    Um tema muda várias coisas ao mesmo tempo: o papel de parede, 
+                    as cores e até os sons do computador. É como trocar a roupa 
+                    do seu Windows inteiro com um clique!
+                </TextBlock>
+                <Button Content="🖌️  Ver e Trocar Temas" Width="210" Height="38"
+                        HorizontalAlignment="Left"
+                        Style="{StaticResource CardButtonStyle}"
+                        Click="AbrirTemas_Click" Margin="0,0,0,20"/>
+
+                <Separator Background="#DDD" Margin="0,0,0,20"/>
+
+                <!-- SEÇÃO: Tamanho do Texto -->
+                <TextBlock Text="🔡 Tamanho do Texto e Ícones"
+                           FontSize="15" FontWeight="Bold"
+                           Foreground="#1E3A5F" Margin="0,0,0,5"/>
+                <TextBlock TextWrapping="Wrap" Foreground="#555" FontSize="12" Margin="0,0,0,12">
+                    Se as letras e os ícones do seu computador estão pequenos demais 
+                    e difíceis de ler, você pode aumentá-los aqui. Muito útil para 
+                    quem tem dificuldade visual!
+                </TextBlock>
+                <Button Content="🔡  Ajustar Tamanho de Texto e Ícones" Width="280" Height="38"
+                        HorizontalAlignment="Left"
+                        Style="{StaticResource CardButtonStyle}"
+                        Click="AjustarTexto_Click" Margin="0,0,0,10"/>
+
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>

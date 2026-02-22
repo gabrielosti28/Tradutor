@@ -40,5 +40,12 @@ namespace Tradutor.Views
         {
             Process.Start(new ProcessStartInfo("ms-settings:network") { UseShellExecute = true });
         }
+        private void AbrirAparencia_Click(object sender, RoutedEventArgs e)
+        {
+            var janela = new AparenciaWindow();
+            janela.ShowDialog();
+        }
+
+
     }
 }

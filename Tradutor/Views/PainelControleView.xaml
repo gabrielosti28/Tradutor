@@ -117,7 +117,22 @@
                                 Click="AbrirRede_Click" Height="27"/>
                     </StackPanel>
                 </Border>
-
+                <!-- Cartão: Aparência -->
+                <Border Style="{StaticResource CardStyle}" Height="195">
+                    <StackPanel>
+                        <TextBlock Text="🎨" FontSize="32" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Aparência"
+                   FontSize="14" FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   Foreground="#1E3A5F" Margin="0,8,0,4"/>
+                        <TextBlock Text="Mude o visual do seu computador: cores, papel de parede e muito mais"
+                   FontSize="11" Foreground="#666"
+                   TextAlignment="Center" TextWrapping="Wrap"/>
+                        <Button Content="Abrir" Margin="0,12,0,0"
+                Style="{StaticResource CardButtonStyle}"
+                Click="AbrirAparencia_Click"/>
+                    </StackPanel>
+                </Border>
             </WrapPanel>
         </StackPanel>
     </ScrollViewer>
