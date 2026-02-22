@@ -132,6 +132,71 @@
                 Style="{StaticResource CardButtonStyle}"
                 Click="AbrirAparencia_Click"/>
                     </StackPanel>
+               
+               </Border>
+                <!-- Cartão: Sons -->
+                <Border Style="{StaticResource CardStyle}" Height="195">
+                    <StackPanel>
+                        <TextBlock Text="🔊" FontSize="32" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Sons"
+                   FontSize="14" FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   Foreground="#1E3A5F" Margin="0,8,0,4"/>
+                        <TextBlock Text="Ajuste os sons do seu computador: notificações, volume e eventos"
+                   FontSize="11" Foreground="#666"
+                   TextAlignment="Center" TextWrapping="Wrap"/>
+                        <Button Content="Abrir" Margin="0,12,0,0"
+                Style="{StaticResource CardButtonStyle}"
+                Click="AbrirSons_Click"/>
+                    </StackPanel>
+                </Border>
+                <!-- Cartão: Mouse e Teclado -->
+                <Border Style="{StaticResource CardStyle}" Height="195">
+                    <StackPanel>
+                        <TextBlock Text="🖱️" FontSize="32" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Mouse e Teclado"
+                   FontSize="14" FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   Foreground="#1E3A5F" Margin="0,8,0,4"/>
+                        <TextBlock Text="Ajuste a velocidade do mouse, do teclado e o idioma de digitação"
+                   FontSize="11" Foreground="#666"
+                   TextAlignment="Center" TextWrapping="Wrap"/>
+                        <Button Content="Abrir" Margin="0,12,0,0"
+                Style="{StaticResource CardButtonStyle}"
+                Click="AbrirMouseTeclado_Click"/>
+                    </StackPanel>
+                </Border>
+                <!-- Cartão: Energia -->
+                <Border Style="{StaticResource CardStyle}" Height="195">
+                    <StackPanel>
+                        <TextBlock Text="⚡" FontSize="32" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Energia"
+                   FontSize="14" FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   Foreground="#1E3A5F" Margin="0,8,0,4"/>
+                        <TextBlock Text="Controle como seu computador usa energia e quando a tela se apaga"
+                   FontSize="11" Foreground="#666"
+                   TextAlignment="Center" TextWrapping="Wrap"/>
+                        <Button Content="Abrir" Margin="0,12,0,0"
+                Style="{StaticResource CardButtonStyle}"
+                Click="AbrirEnergia_Click"/>
+                    </StackPanel>
+                </Border>
+                <!-- Cartão: Armazenamento -->
+                <Border Style="{StaticResource CardStyle}" Height="195">
+                    <StackPanel>
+                        <TextBlock Text="💾" FontSize="32" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Armazenamento"
+                   FontSize="14" FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   Foreground="#1E3A5F" Margin="0,8,0,4"/>
+                        <TextBlock Text="Veja quanto espaço tem no seu computador e libere o que não precisa"
+                   FontSize="11" Foreground="#666"
+                   TextAlignment="Center" TextWrapping="Wrap"/>
+                        <Button Content="Abrir" Margin="0,12,0,0"
+                Style="{StaticResource CardButtonStyle}"
+                Click="AbrirArmazenamento_Click"/>
+                    </StackPanel>
                 </Border>
             </WrapPanel>
         </StackPanel>

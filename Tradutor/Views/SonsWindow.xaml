@@ -1,0 +1,125 @@
+﻿<Window x:Class="Tradutor.Views.SonsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="🔊 Sons do Computador"
+        Height="540" Width="680"
+        WindowStartupLocation="CenterScreen"
+        Background="#F0F4F8"
+        ResizeMode="NoResize">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Cabeçalho -->
+        <Border Grid.Row="0" Background="#1E3A5F">
+            <StackPanel VerticalAlignment="Center" Margin="25,0">
+                <TextBlock Text="🔊 Sons"
+                           FontSize="20" FontWeight="Bold" Foreground="White"/>
+                <TextBlock Text="Controle todos os sons do seu computador"
+                           FontSize="11" Foreground="#A8C4E0"/>
+            </StackPanel>
+        </Border>
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel Margin="25,20">
+
+                <!-- SEÇÃO: Volume -->
+                <TextBlock Text="🔉 Volume Geral"
+                           FontSize="15" FontWeight="Bold"
+                           Foreground="#1E3A5F" Margin="0,0,0,5"/>
+                <TextBlock TextWrapping="Wrap" Foreground="#555" FontSize="12" Margin="0,0,0,12">
+                    O volume geral controla o som de tudo no computador ao mesmo tempo: 
+                    músicas, vídeos, notificações e chamadas. Arraste o controle abaixo 
+                    para deixar mais alto ou mais baixo.
+                </TextBlock>
+
+                <!-- Controle de volume real -->
+                <Border Background="White" CornerRadius="10" Padding="20" Margin="0,0,0,8">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="6" ShadowDepth="1" Opacity="0.1"/>
+                    </Border.Effect>
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+                            <TextBlock Text="🔈" FontSize="18" VerticalAlignment="Center"/>
+                            <Slider x:Name="SliderVolume"
+                                    Minimum="0" Maximum="100" Value="50"
+                                    Width="380" Margin="12,0"
+                                    VerticalAlignment="Center"
+                                    ValueChanged="SliderVolume_ValueChanged"/>
+                            <TextBlock Text="🔊" FontSize="18" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <TextBlock x:Name="LblVolume"
+                                   Text="Volume atual: 50%"
+                                   FontSize="12" Foreground="#555"
+                                   HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+                    <Button Content="🔇  Silenciar Tudo" Width="180" Height="38"
+                            Style="{StaticResource CardButtonStyle}"
+                            Click="Silenciar_Click" Margin="0,0,10,0"/>
+                    <Button Content="🎚️  Mixer de Volume" Width="200" Height="38"
+                            Style="{StaticResource CardButtonStyle}"
+                            Click="AbrirMixer_Click"/>
+                </StackPanel>
+
+                <Separator Background="#DDD" Margin="0,0,0,20"/>
+
+                <!-- SEÇÃO: Sons de Notificação -->
+                <TextBlock Text="🔔 Sons de Notificação"
+                           FontSize="15" FontWeight="Bold"
+                           Foreground="#1E3A5F" Margin="0,0,0,5"/>
+                <TextBlock TextWrapping="Wrap" Foreground="#555" FontSize="12" Margin="0,0,0,12">
+                    Notificações são os avisos que aparecem no canto da tela — 
+                    de e-mail, de programas, do próprio Windows. Você pode 
+                    deixar com som, sem som, ou ajustar o volume só delas.
+                </TextBlock>
+                <Button Content="🔔  Configurar Sons de Notificação" Width="260" Height="38"
+                        HorizontalAlignment="Left"
+                        Style="{StaticResource CardButtonStyle}"
+                        Click="ConfigurarNotificacoes_Click" Margin="0,0,0,20"/>
+
+                <Separator Background="#DDD" Margin="0,0,0,20"/>
+
+                <!-- SEÇÃO: Esquemas de Som -->
+                <TextBlock Text="🎵 Esquema de Sons do Windows"
+                           FontSize="15" FontWeight="Bold"
+                           Foreground="#1E3A5F" Margin="0,0,0,5"/>
+                <TextBlock TextWrapping="Wrap" Foreground="#555" FontSize="12" Margin="0,0,0,12">
+                    O Windows toca sons em vários momentos: quando você liga o computador, 
+                    quando um erro acontece, quando chega uma mensagem. Aqui você pode 
+                    trocar esses sons ou desativar todos de uma vez.
+                </TextBlock>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+                    <Button Content="🎵  Trocar Esquema de Sons" Width="210" Height="38"
+                            Style="{StaticResource CardButtonStyle}"
+                            Click="TrocarEsquema_Click" Margin="0,0,10,0"/>
+                    <Button Content="🔕  Desativar Todos os Sons" Width="210" Height="38"
+                            Style="{StaticResource CardButtonStyle}"
+                            Click="DesativarSons_Click"/>
+                </StackPanel>
+
+                <Separator Background="#DDD" Margin="0,0,0,20"/>
+
+                <!-- SEÇÃO: Dispositivos de Som -->
+                <TextBlock Text="🎧 Dispositivos de Som"
+                           FontSize="15" FontWeight="Bold"
+                           Foreground="#1E3A5F" Margin="0,0,0,5"/>
+                <TextBlock TextWrapping="Wrap" Foreground="#555" FontSize="12" Margin="0,0,0,12">
+                    Se você tem fone de ouvido, caixa de som ou microfone conectados, 
+                    aqui você escolhe qual deles o computador deve usar. 
+                    Útil quando o som sai pelo lugar errado!
+                </TextBlock>
+                <Button Content="🎧  Gerenciar Dispositivos de Som" Width="260" Height="38"
+                        HorizontalAlignment="Left"
+                        Style="{StaticResource CardButtonStyle}"
+                        Click="GerenciarDispositivos_Click" Margin="0,0,0,10"/>
+
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>

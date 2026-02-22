@@ -1,0 +1,179 @@
+﻿<Window x:Class="Tradutor.Views.ArmazenamentoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="💾 Armazenamento"
+        Height="620" Width="680"
+        WindowStartupLocation="CenterScreen"
+        Background="#F0F4F8"
+        ResizeMode="NoResize">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Cabeçalho -->
+        <Border Grid.Row="0" Background="#1E3A5F">
+            <StackPanel VerticalAlignment="Center" Margin="25,0">
+                <TextBlock Text="💾 Armazenamento"
+                           FontSize="20" FontWeight="Bold" Foreground="White"/>
+                <TextBlock Text="Veja e gerencie o espaço do seu computador"
+                           FontSize="11" Foreground="#A8C4E0"/>
+            </StackPanel>
+        </Border>
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel Margin="25,20">
+
+                <!-- SEÇÃO: Espaço em Disco -->
+                <TextBlock Text="📊 Espaço no seu Computador"
+                           FontSize="15" FontWeight="Bold"
+                           Foreground="#1E3A5F" Margin="0,0,0,5"/>
+                <TextBlock TextWrapping="Wrap" Foreground="#555" FontSize="12" Margin="0,0,0,12">
+                    O armazenamento é como uma gaveta — quando enche, 
+                    não cabe mais nada. Abaixo você vê quanto espaço 
+                    cada disco do seu computador ainda tem disponível.
+                </TextBlock>
+
+                <!-- Lista de discos carregada dinamicamente -->
+                <ItemsControl x:Name="ListaDiscos" Margin="0,0,0,15">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Background="White" CornerRadius="10"
+                                    Padding="15" Margin="0,0,0,10">
+                                <Border.Effect>
+                                    <DropShadowEffect BlurRadius="6" ShadowDepth="1" Opacity="0.1"/>
+                                </Border.Effect>
+                                <StackPanel>
+                                    <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+                                        <TextBlock Text="{Binding Icone}" FontSize="20"
+                                                   VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                        <StackPanel>
+                                            <TextBlock Text="{Binding Nome}" FontSize="13"
+                                                       FontWeight="Bold" Foreground="#1E3A5F"/>
+                                            <TextBlock Text="{Binding Resumo}" FontSize="11"
+                                                       Foreground="#666"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <!-- Barra de progresso colorida -->
+                                    <Grid Height="14">
+                                        <ProgressBar Value="{Binding PorcentagemUsada}"
+                                                     Maximum="100" Height="14"
+                                                     Background="#E8E8E8"
+                                                     Foreground="{Binding CorBarra}"/>
+                                        <TextBlock Text="{Binding PorcentagemTexto}"
+                                                   FontSize="10" FontWeight="Bold"
+                                                   Foreground="White"
+                                                   HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center"/>
+                                    </Grid>
+                                    <TextBlock Text="{Binding Aviso}" FontSize="11"
+                                               Foreground="#CC4400" Margin="0,5,0,0"
+                                               Visibility="{Binding AvisoVisivel}"/>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+                <Separator Background="#DDD" Margin="0,0,0,20"/>
+
+                <!-- SEÇÃO: Limpeza -->
+                <TextBlock Text="🧹 Limpar o Computador"
+                           FontSize="15" FontWeight="Bold"
+                           Foreground="#1E3A5F" Margin="0,0,0,5"/>
+                <TextBlock TextWrapping="Wrap" Foreground="#555" FontSize="12" Margin="0,0,0,12">
+                    Com o tempo, seu computador acumula arquivos temporários — 
+                    são restos de programas, downloads antigos e lixo que 
+                    o próprio Windows deixa para trás. Eles ocupam espaço 
+                    sem servir para nada. Limpar é seguro e não apaga 
+                    seus documentos ou fotos.
+                </TextBlock>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+                    <Button Content="🧹  Limpeza de Disco" Width="190" Height="38"
+                            Style="{StaticResource CardButtonStyle}"
+                            Click="LimpezaDisco_Click" Margin="0,0,10,0"/>
+                    <Button Content="✨  Limpeza Avançada (Storage Sense)" Width="260" Height="38"
+                            Style="{StaticResource CardButtonStyle}"
+                            Click="StorageSense_Click"/>
+                </StackPanel>
+
+                <Separator Background="#DDD" Margin="0,0,0,20"/>
+
+                <!-- SEÇÃO: Lixeira -->
+                <TextBlock Text="🗑️ Lixeira"
+                           FontSize="15" FontWeight="Bold"
+                           Foreground="#1E3A5F" Margin="0,0,0,5"/>
+                <TextBlock TextWrapping="Wrap" Foreground="#555" FontSize="12" Margin="0,0,0,12">
+    Quando você deleta um arquivo, ele vai para a Lixeira — 
+    como uma lixeira de verdade, antes do caminhão passar. 
+    Enquanto estiver lá, você pode recuperar. Mas ela também 
+    ocupa espaço! Esvaziar a lixeira é seguro se você tem 
+    certeza que não precisa mais dos arquivos deletados.
+                </TextBlock>
+
+                <!-- Tamanho atual da lixeira -->
+                <Border Background="White" CornerRadius="10" Padding="15" Margin="0,0,0,12">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="6" ShadowDepth="1" Opacity="0.1"/>
+                    </Border.Effect>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="🗑️" FontSize="24" VerticalAlignment="Center" Margin="0,0,12,0"/>
+                        <StackPanel VerticalAlignment="Center">
+                            <TextBlock Text="Tamanho atual da Lixeira:"
+                       FontSize="12" Foreground="#666"/>
+                            <TextBlock x:Name="LblTamanhoLixeira"
+                       Text="Calculando..."
+                       FontSize="15" FontWeight="Bold"
+                       Foreground="#1E3A5F"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+                    <Button Content="🗑️  Esvaziar Lixeira" Width="190" Height="38"
+            Style="{StaticResource CardButtonStyle}"
+            Click="EsvaziarLixeira_Click" Margin="0,0,10,0"/>
+                    <Button Content="🔍  Abrir Lixeira" Width="160" Height="38"
+            Style="{StaticResource CardButtonStyle}"
+            Click="AbrirLixeira_Click"/>
+                </StackPanel>
+
+                <Separator Background="#DDD" Margin="0,0,0,20"/>
+                <Separator Background="#DDD" Margin="0,0,0,20"/>
+
+                <!-- SEÇÃO: Arquivos Grandes -->
+                <TextBlock Text="🔎 Encontrar Arquivos Grandes"
+           FontSize="15" FontWeight="Bold"
+           Foreground="#1E3A5F" Margin="0,0,0,5"/>
+                <TextBlock TextWrapping="Wrap" Foreground="#555" FontSize="12" Margin="0,0,0,12">
+    Não sabe por que seu disco está cheio? Esta ferramenta 
+    mostra os arquivos que mais ocupam espaço no seu computador. 
+    Muitas vezes são vídeos antigos, backups esquecidos ou 
+    downloads que nunca foram abertos.
+                </TextBlock>
+                <Button Content="🔎  Ver Arquivos que Ocupam Mais Espaço" Width="310" Height="38"
+        HorizontalAlignment="Left"
+        Style="{StaticResource CardButtonStyle}"
+        Click="EncontrarArquivosGrandes_Click" Margin="0,0,0,10"/>
+                <!-- SEÇÃO: Desfragmentação -->
+                <TextBlock Text="🔧 Organizar o Disco (Desfragmentação)"
+                           FontSize="15" FontWeight="Bold"
+                           Foreground="#1E3A5F" Margin="0,0,0,5"/>
+                <TextBlock TextWrapping="Wrap" Foreground="#555" FontSize="12" Margin="0,0,0,12">
+                    Imagine que seu HD é uma prateleira de livros bagunçada — 
+                    cada livro em um lugar diferente. Desfragmentar é como 
+                    organizar tudo em ordem, deixando o computador mais 
+                    rápido para encontrar os arquivos. Recomendado para 
+                    HDs tradicionais. SSDs não precisam disso.
+                </TextBlock>
+                <Button Content="🔧  Organizar Disco" Width="190" Height="38"
+                        HorizontalAlignment="Left"
+                        Style="{StaticResource CardButtonStyle}"
+                        Click="DesfragmentarDisco_Click" Margin="0,0,0,10"/>
+
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>

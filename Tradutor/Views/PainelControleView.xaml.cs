@@ -45,6 +45,26 @@ namespace Tradutor.Views
             var janela = new AparenciaWindow();
             janela.ShowDialog();
         }
+        private void AbrirSons_Click(object sender, RoutedEventArgs e)
+        {
+            var janela = new SonsWindow();
+            janela.ShowDialog();
+        }
+        private void AbrirMouseTeclado_Click(object sender, RoutedEventArgs e)
+        {
+            var janela = new MouseTecladoWindow();
+            janela.ShowDialog();
+        }
+        private void AbrirEnergia_Click(object sender, RoutedEventArgs e)
+        {
+            var janela = new EnergiaWindow();
+            janela.ShowDialog();
+        }
+        private void AbrirArmazenamento_Click(object sender, RoutedEventArgs e)
+        {
+            var janela = new ArmazenamentoWindow();
+            janela.ShowDialog();
+        }
 
 
     }

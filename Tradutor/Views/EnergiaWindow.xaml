@@ -1,0 +1,225 @@
+﻿<Window x:Class="Tradutor.Views.EnergiaWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="⚡ Energia"
+        Height="600" Width="680"
+        WindowStartupLocation="CenterScreen"
+        Background="#F0F4F8"
+        ResizeMode="NoResize">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Cabeçalho -->
+        <Border Grid.Row="0" Background="#1E3A5F">
+            <StackPanel VerticalAlignment="Center" Margin="25,0">
+                <TextBlock Text="⚡ Energia"
+                           FontSize="20" FontWeight="Bold" Foreground="White"/>
+                <TextBlock Text="Controle como seu computador usa e economiza energia"
+                           FontSize="11" Foreground="#A8C4E0"/>
+            </StackPanel>
+        </Border>
+        <!-- Plano Atual -->
+        <Border Grid.Row="1" Background="#E8F0F8" Padding="15,10"
+        VerticalAlignment="Top">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="⚡ Plano atual: " FontSize="13"
+                   Foreground="#1E3A5F" FontWeight="Bold"
+                   VerticalAlignment="Center"/>
+                <TextBlock x:Name="LblPlanoAtual" FontSize="13"
+                   Foreground="#2A6496" VerticalAlignment="Center"
+                   Text="Carregando..."/>
+            </StackPanel>
+        </Border>
+        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+            <StackPanel Margin="25,20">
+
+                <!-- SEÇÃO: Planos de Energia -->
+                <TextBlock Text="🔋 Planos de Energia"
+                           FontSize="15" FontWeight="Bold"
+                           Foreground="#1E3A5F" Margin="0,0,0,5"/>
+                <TextBlock TextWrapping="Wrap" Foreground="#555" FontSize="12" Margin="0,0,0,12">
+                    O plano de energia define como o computador equilibra desempenho 
+                    e consumo de energia. Pense assim: o plano Econômico é como 
+                    dirigir devagar para gastar menos combustível. O plano de Alto 
+                    Desempenho é o acelerador no fundo — mais velocidade, mais consumo.
+                </TextBlock>
+
+                <!-- Cartões dos planos -->
+                <Grid Margin="0,0,0,15">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Econômico -->
+                    <Border Grid.Column="0" Background="White" CornerRadius="10"
+                            Padding="12" Margin="0,0,8,0">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="6" ShadowDepth="1" Opacity="0.1"/>
+                        </Border.Effect>
+                        <StackPanel>
+                            <TextBlock Text="🌿" FontSize="24" HorizontalAlignment="Center"/>
+                            <TextBlock Text="Econômico" FontSize="12" FontWeight="Bold"
+                                       HorizontalAlignment="Center" Foreground="#1E3A5F"
+                                       Margin="0,5,0,4"/>
+                            <TextBlock Text="Economiza energia. Ideal para notebook na tomada ou desktop ligado o dia todo."
+                                       FontSize="10" Foreground="#666"
+                                       TextAlignment="Center" TextWrapping="Wrap"
+                                       Margin="0,0,0,8"/>
+                            <Button Content="Ativar" Height="30"
+                                    Style="{StaticResource CardButtonStyle}"
+                                    Click="AtivarEconomico_Click"/>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Balanceado -->
+                    <Border Grid.Column="1" Background="White" CornerRadius="10"
+                            Padding="12" Margin="4,0">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="6" ShadowDepth="1" Opacity="0.1"/>
+                        </Border.Effect>
+                        <StackPanel>
+                            <TextBlock Text="⚖️" FontSize="24" HorizontalAlignment="Center"/>
+                            <TextBlock Text="Balanceado" FontSize="12" FontWeight="Bold"
+                                       HorizontalAlignment="Center" Foreground="#1E3A5F"
+                                       Margin="0,5,0,4"/>
+                            <TextBlock Text="O meio termo. Bom desempenho sem desperdiçar energia. Recomendado para a maioria."
+                                       FontSize="10" Foreground="#666"
+                                       TextAlignment="Center" TextWrapping="Wrap"
+                                       Margin="0,0,0,8"/>
+                            <Button Content="Ativar" Height="30"
+                                    Style="{StaticResource CardButtonStyle}"
+                                    Click="AtivarBalanceado_Click"/>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Alto Desempenho -->
+                    <Border Grid.Column="2" Background="White" CornerRadius="10"
+                            Padding="12" Margin="8,0,0,0">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="6" ShadowDepth="1" Opacity="0.1"/>
+                        </Border.Effect>
+                        <StackPanel>
+                            <TextBlock Text="🚀" FontSize="24" HorizontalAlignment="Center"/>
+                            <TextBlock Text="Alto Desempenho" FontSize="12" FontWeight="Bold"
+                                       HorizontalAlignment="Center" Foreground="#1E3A5F"
+                                       Margin="0,5,0,4"/>
+                            <TextBlock Text="Máxima velocidade. Use quando precisar de desempenho total, mas consome mais energia."
+                                       FontSize="10" Foreground="#666"
+                                       TextAlignment="Center" TextWrapping="Wrap"
+                                       Margin="0,0,0,8"/>
+                            <Button Content="Ativar" Height="30"
+                                    Style="{StaticResource CardButtonStyle}"
+                                    Click="AtivarAltoDesempenho_Click"/>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+
+                <Separator Background="#DDD" Margin="0,0,0,20"/>
+
+                <!-- SEÇÃO: Tela -->
+                <TextBlock Text="🖥️ Quando a Tela se Apaga"
+                           FontSize="15" FontWeight="Bold"
+                           Foreground="#1E3A5F" Margin="0,0,0,5"/>
+                <TextBlock TextWrapping="Wrap" Foreground="#555" FontSize="12" Margin="0,0,0,12">
+                    Se você parar de usar o computador por alguns minutos, 
+                    a tela se apaga automaticamente para economizar energia. 
+                    Isso é normal! Basta mover o mouse ou pressionar uma tecla 
+                    para ela voltar. Aqui você define quanto tempo esperar.
+                </TextBlock>
+                <Button Content="🖥️  Ajustar Tempo da Tela" Width="230" Height="38"
+                        HorizontalAlignment="Left"
+                        Style="{StaticResource CardButtonStyle}"
+                        Click="AjustarTela_Click" Margin="0,0,0,20"/>
+
+                <Separator Background="#DDD" Margin="0,0,0,20"/>
+
+                <!-- SEÇÃO: Suspender e Hibernar -->
+                <TextBlock Text="😴 Suspender e Hibernar"
+                           FontSize="15" FontWeight="Bold"
+                           Foreground="#1E3A5F" Margin="0,0,0,5"/>
+
+                <Border Background="White" CornerRadius="10" Padding="15" Margin="0,0,0,15">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="6" ShadowDepth="1" Opacity="0.1"/>
+                    </Border.Effect>
+                    <StackPanel>
+                        <TextBlock TextWrapping="Wrap" FontSize="12" Foreground="#444" Margin="0,0,0,8">
+                            <Bold>😴 Suspender</Bold> — O computador fica em "modo soneca". 
+                            Ele para quase tudo mas lembra o que você estava fazendo. 
+                            Liga rápido quando você voltar.
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap" FontSize="12" Foreground="#444" Margin="0,0,0,8">
+                            <Bold>💤 Hibernar</Bold> — Parecido com suspender, mas salva tudo 
+                            no HD e desliga de verdade. Demora um pouco mais para ligar, 
+                            mas não gasta energia nenhuma enquanto espera.
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap" FontSize="12" Foreground="#444">
+                            <Bold>⭕ Desligar</Bold> — Fecha tudo e desliga completamente. 
+                            Use quando não for usar o computador por muitas horas.
+                        </TextBlock>
+                    </StackPanel>
+                </Border>
+
+                <Button Content="😴  Ajustar Suspender e Hibernar" Width="260" Height="38"
+                        HorizontalAlignment="Left"
+                        Style="{StaticResource CardButtonStyle}"
+                        Click="AjustarSuspender_Click" Margin="0,0,0,20"/>
+
+                <Separator Background="#DDD" Margin="0,0,0,20"/>
+                <Separator Background="#DDD" Margin="0,0,0,20"/>
+
+                <!-- SEÇÃO: Manter Acordado -->
+                <TextBlock Text="☕ Manter o Computador Acordado"
+           FontSize="15" FontWeight="Bold"
+           Foreground="#1E3A5F" Margin="0,0,0,5"/>
+                <TextBlock TextWrapping="Wrap" Foreground="#555" FontSize="12" Margin="0,0,0,12">
+    Está baixando um arquivo grande, atualizando um programa ou 
+    fazendo uma tarefa demorada? Use esta opção para impedir que 
+    o computador durma no meio do processo. Quando terminar, 
+    clique em "Liberar" para tudo voltar ao normal.
+                </TextBlock>
+
+                <Border Background="White" CornerRadius="10" Padding="15" Margin="0,0,0,10">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="6" ShadowDepth="1" Opacity="0.1"/>
+                    </Border.Effect>
+                    <StackPanel>
+                        <TextBlock x:Name="LblStatusAcordado"
+                   Text="😴 O computador pode suspender normalmente"
+                   FontSize="12" Foreground="#666"
+                   HorizontalAlignment="Center" Margin="0,0,0,12"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Button Content="☕  Manter Acordado" Width="180" Height="38"
+                    Style="{StaticResource CardButtonStyle}"
+                    Click="ManterAcordado_Click" Margin="0,0,10,0"/>
+                            <Button Content="😴  Liberar" Width="140" Height="38"
+                    Style="{StaticResource CardButtonStyle}"
+                    Click="LiberarSono_Click"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+                <!-- SEÇÃO: Botão de Energia -->
+                <TextBlock Text="🔘 O que o Botão de Energia Faz"
+                           FontSize="15" FontWeight="Bold"
+                           Foreground="#1E3A5F" Margin="0,0,0,5"/>
+                <TextBlock TextWrapping="Wrap" Foreground="#555" FontSize="12" Margin="0,0,0,12">
+                    Você sabia que pode escolher o que acontece quando você 
+                    pressiona o botão de ligar/desligar do computador? 
+                    Ele pode desligar, suspender, hibernar ou até não fazer nada!
+                </TextBlock>
+                <Button Content="🔘  Configurar Botão de Energia" Width="260" Height="38"
+                        HorizontalAlignment="Left"
+                        Style="{StaticResource CardButtonStyle}"
+                        Click="ConfigurarBotao_Click" Margin="0,0,0,10"/>
+
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>

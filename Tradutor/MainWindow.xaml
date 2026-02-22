@@ -55,7 +55,9 @@
                             Content="⌨️  Terminal Fácil"
                             Style="{StaticResource MenuButtonStyle}"
                             Click="BtnTerminal_Click"/>
+                    
                 </StackPanel>
+                
             </Border>
 
             <!-- Área de Conteúdo -->

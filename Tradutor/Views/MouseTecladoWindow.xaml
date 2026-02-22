@@ -1,0 +1,133 @@
+﻿<Window x:Class="Tradutor.Views.MouseTecladoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="🖱️ Mouse e Teclado"
+        Height="600" Width="680"
+        WindowStartupLocation="CenterScreen"
+        Background="#F0F4F8"
+        ResizeMode="NoResize">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Cabeçalho -->
+        <Border Grid.Row="0" Background="#1E3A5F">
+            <StackPanel VerticalAlignment="Center" Margin="25,0">
+                <TextBlock Text="🖱️ Mouse e Teclado"
+                           FontSize="20" FontWeight="Bold" Foreground="White"/>
+                <TextBlock Text="Deixe o mouse e o teclado do jeito que você prefere"
+                           FontSize="11" Foreground="#A8C4E0"/>
+            </StackPanel>
+        </Border>
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel Margin="25,20">
+
+                <!-- SEÇÃO: Velocidade do Mouse -->
+                <TextBlock Text="🖱️ Velocidade do Mouse"
+                           FontSize="15" FontWeight="Bold"
+                           Foreground="#1E3A5F" Margin="0,0,0,5"/>
+                <TextBlock TextWrapping="Wrap" Foreground="#555" FontSize="12" Margin="0,0,0,12">
+                    A velocidade do mouse controla o quanto o cursor se move na tela 
+                    quando você mexe o mouse. Se o cursor está se movendo rápido demais 
+                    ou devagar demais, ajuste aqui.
+                </TextBlock>
+
+                <Border Background="White" CornerRadius="10" Padding="20" Margin="0,0,0,8">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="6" ShadowDepth="1" Opacity="0.1"/>
+                    </Border.Effect>
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+                            <TextBlock Text="🐢" FontSize="18" VerticalAlignment="Center"/>
+                            <Slider x:Name="SliderMouse"
+                                    Minimum="1" Maximum="20" Value="10"
+                                    Width="370" Margin="12,0"
+                                    VerticalAlignment="Center"
+                                    ValueChanged="SliderMouse_ValueChanged"/>
+                            <TextBlock Text="🐇" FontSize="18" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <TextBlock x:Name="LblMouse"
+                                   Text="Velocidade atual: Média"
+                                   FontSize="12" Foreground="#555"
+                                   HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+                <Button Content="⚙️  Mais opções de Mouse" Width="210" Height="38"
+                        HorizontalAlignment="Left"
+                        Style="{StaticResource CardButtonStyle}"
+                        Click="MaisOpcoesMouse_Click" Margin="0,8,0,20"/>
+
+                <Separator Background="#DDD" Margin="0,0,0,20"/>
+
+                <!-- SEÇÃO: Botão Principal do Mouse -->
+                <TextBlock Text="👆 Botão Principal do Mouse"
+                           FontSize="15" FontWeight="Bold"
+                           Foreground="#1E3A5F" Margin="0,0,0,5"/>
+                <TextBlock TextWrapping="Wrap" Foreground="#555" FontSize="12" Margin="0,0,0,12">
+                    Normalmente o botão esquerdo do mouse é o principal (para clicar e selecionar). 
+                    Se você é canhoto, pode trocar para que o botão direito vire o principal.
+                </TextBlock>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+                    <Button Content="👈  Botão Esquerdo (padrão)" Width="210" Height="38"
+                            Style="{StaticResource CardButtonStyle}"
+                            Click="BotaoEsquerdo_Click" Margin="0,0,10,0"/>
+                    <Button Content="👉  Botão Direito (canhoto)" Width="210" Height="38"
+                            Style="{StaticResource CardButtonStyle}"
+                            Click="BotaoDireito_Click"/>
+                </StackPanel>
+
+                <Separator Background="#DDD" Margin="0,0,0,20"/>
+
+                <!-- SEÇÃO: Velocidade do Teclado -->
+                <TextBlock Text="⌨️ Velocidade de Digitação"
+                           FontSize="15" FontWeight="Bold"
+                           Foreground="#1E3A5F" Margin="0,0,0,5"/>
+                <TextBlock TextWrapping="Wrap" Foreground="#555" FontSize="12" Margin="0,0,0,12">
+                    Quando você segura uma tecla pressionada, ela começa a se repetir. 
+                    Aqui você controla quanto tempo o computador espera antes de começar 
+                    a repetir e com que rapidez ela se repete.
+                </TextBlock>
+                <Button Content="⌨️  Ajustar Velocidade do Teclado" Width="250" Height="38"
+                        HorizontalAlignment="Left"
+                        Style="{StaticResource CardButtonStyle}"
+                        Click="AjustarTeclado_Click" Margin="0,0,0,20"/>
+
+                <Separator Background="#DDD" Margin="0,0,0,20"/>
+
+                <!-- SEÇÃO: Idioma do Teclado -->
+                <TextBlock Text="🌎 Idioma de Digitação"
+                           FontSize="15" FontWeight="Bold"
+                           Foreground="#1E3A5F" Margin="0,0,0,5"/>
+                <TextBlock TextWrapping="Wrap" Foreground="#555" FontSize="12" Margin="0,0,0,12">
+                    O idioma do teclado define como as teclas funcionam. Se você digita 
+                    e aparecem caracteres errados (por exemplo, aperta "ç" e aparece outra coisa), 
+                    provavelmente o idioma está errado. Aqui você pode corrigir isso.
+                </TextBlock>
+                <Button Content="🌎  Configurar Idioma do Teclado" Width="250" Height="38"
+                        HorizontalAlignment="Left"
+                        Style="{StaticResource CardButtonStyle}"
+                        Click="ConfigurarIdioma_Click" Margin="0,0,0,20"/>
+
+                <Separator Background="#DDD" Margin="0,0,0,20"/>
+
+                <!-- SEÇÃO: Tamanho do Cursor -->
+                <TextBlock Text="🔍 Tamanho e Cor do Cursor"
+                           FontSize="15" FontWeight="Bold"
+                           Foreground="#1E3A5F" Margin="0,0,0,5"/>
+                <TextBlock TextWrapping="Wrap" Foreground="#555" FontSize="12" Margin="0,0,0,12">
+                    Se você tem dificuldade em enxergar o cursor do mouse na tela, 
+                    pode deixá-lo maior e até mudar sua cor para ficar mais fácil de encontrar.
+                </TextBlock>
+                <Button Content="🔍  Ajustar Tamanho e Cor do Cursor" Width="270" Height="38"
+                        HorizontalAlignment="Left"
+                        Style="{StaticResource CardButtonStyle}"
+                        Click="AjustarCursor_Click" Margin="0,0,0,10"/>
+
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>

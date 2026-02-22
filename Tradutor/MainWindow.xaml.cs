@@ -45,6 +45,9 @@ namespace Tradutor
                 Foreground = new System.Windows.Media.SolidColorBrush(
                     System.Windows.Media.Color.FromRgb(100, 130, 160))
             };
+       
         }
+        
+    
     }
 }
