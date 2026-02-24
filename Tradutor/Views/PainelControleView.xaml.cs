@@ -72,7 +72,16 @@ namespace Tradutor.Views
             var janela = new SegurancaWindow();
             janela.ShowDialog();
         }
-
+        private void AbrirInicializacao_Click(object sender, RoutedEventArgs e)
+        {
+            var janela = new InicializacaoWindow();
+            janela.ShowDialog();
+        }
+        private void AbrirAcessibilidade_Click(object sender, RoutedEventArgs e)
+        {
+            var janela = new AcessibilidadeWindow();
+            janela.ShowDialog();
+        }
 
 
     }

@@ -1,0 +1,320 @@
+﻿<Window x:Class="Tradutor.Views.AcessibilidadeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="♿ Acessibilidade"
+        Height="680" Width="700"
+        WindowStartupLocation="CenterScreen"
+        Background="#F0F4F8"
+        ResizeMode="NoResize">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Cabeçalho -->
+        <Border Grid.Row="0" Background="#1E3A5F">
+            <StackPanel VerticalAlignment="Center" Margin="25,0">
+                <TextBlock Text="♿ Acessibilidade"
+                           FontSize="20" FontWeight="Bold" Foreground="White"/>
+                <TextBlock Text="Recursos para tornar o computador mais fácil de usar"
+                           FontSize="11" Foreground="#A8C4E0"/>
+            </StackPanel>
+        </Border>
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel Margin="25,20">
+
+                <!-- SEÇÃO: Visão -->
+                <TextBlock Text="👁️ Visão — Enxergar Melhor"
+                           FontSize="15" FontWeight="Bold"
+                           Foreground="#1E3A5F" Margin="0,0,0,5"/>
+                <TextBlock TextWrapping="Wrap" Foreground="#555"
+                           FontSize="12" Margin="0,0,0,12">
+                    Se você tem dificuldade para enxergar o que está na tela, 
+                    o Windows tem ferramentas que podem ajudar muito.
+                </TextBlock>
+
+                <Border Background="White" CornerRadius="10"
+                        Padding="15" Margin="0,0,0,8">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="6" ShadowDepth="1" Opacity="0.1"/>
+                    </Border.Effect>
+                    <StackPanel>
+
+                        <!-- Lupa -->
+                        <Grid Margin="0,0,0,12">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel>
+                                <TextBlock Text="🔍 Lupa"
+                                           FontSize="13" FontWeight="Bold"
+                                           Foreground="#1E3A5F"/>
+                                <TextBlock TextWrapping="Wrap" FontSize="11"
+                                           Foreground="#666">
+                                    Amplia qualquer parte da tela para ficar 
+                                    maior e mais fácil de ver. Você controla 
+                                    o nível de zoom.
+                                </TextBlock>
+                            </StackPanel>
+                            <Button Grid.Column="1" Content="Abrir Lupa"
+                                    Width="110" Height="32"
+                                    Style="{StaticResource CardButtonStyle}"
+                                    Click="AbrirLupa_Click"
+                                    VerticalAlignment="Center"/>
+                        </Grid>
+
+                        <Separator Background="#EEE" Margin="0,0,0,12"/>
+
+                        <!-- Alto Contraste -->
+                        <Grid Margin="0,0,0,12">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel>
+                                <TextBlock Text="🌑 Alto Contraste"
+                                           FontSize="13" FontWeight="Bold"
+                                           Foreground="#1E3A5F"/>
+                                <TextBlock TextWrapping="Wrap" FontSize="11"
+                                           Foreground="#666">
+                                    Muda as cores da tela para preto e branco 
+                                    com alto contraste — muito útil para quem 
+                                    tem sensibilidade à luz ou baixa visão.
+                                </TextBlock>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                <Button Content="Ativar" Width="110" Height="32"
+                                        Style="{StaticResource CardButtonStyle}"
+                                        Click="AtivarAltoContraste_Click"
+                                        Margin="0,0,0,4"/>
+                                <Button Content="Desativar" Width="110" Height="32"
+                                        Style="{StaticResource CardButtonStyle}"
+                                        Click="DesativarAltoContraste_Click"/>
+                            </StackPanel>
+                        </Grid>
+
+                        <Separator Background="#EEE" Margin="0,0,0,12"/>
+
+                        <!-- Tamanho do texto -->
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel>
+                                <TextBlock Text="🔡 Textos Maiores"
+                                           FontSize="13" FontWeight="Bold"
+                                           Foreground="#1E3A5F"/>
+                                <TextBlock TextWrapping="Wrap" FontSize="11"
+                                           Foreground="#666">
+                                    Aumenta o tamanho das letras em todo o 
+                                    sistema para ficarem mais fáceis de ler.
+                                </TextBlock>
+                            </StackPanel>
+                            <Button Grid.Column="1" Content="Ajustar"
+                                    Width="110" Height="32"
+                                    Style="{StaticResource CardButtonStyle}"
+                                    Click="AjustarTexto_Click"
+                                    VerticalAlignment="Center"/>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <Separator Background="#DDD" Margin="0,10,0,20"/>
+
+                <!-- SEÇÃO: Audição -->
+                <TextBlock Text="👂 Audição — Ouvir Melhor"
+                           FontSize="15" FontWeight="Bold"
+                           Foreground="#1E3A5F" Margin="0,0,0,5"/>
+                <TextBlock TextWrapping="Wrap" Foreground="#555"
+                           FontSize="12" Margin="0,0,0,12">
+                    Se você tem dificuldade para ouvir os sons do computador, 
+                    estas opções podem ajudar com avisos visuais e legendas.
+                </TextBlock>
+
+                <Border Background="White" CornerRadius="10"
+                        Padding="15" Margin="0,0,0,8">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="6" ShadowDepth="1" Opacity="0.1"/>
+                    </Border.Effect>
+                    <StackPanel>
+
+                        <!-- Legendas -->
+                        <Grid Margin="0,0,0,12">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel>
+                                <TextBlock Text="💬 Legendas Automáticas"
+                                           FontSize="13" FontWeight="Bold"
+                                           Foreground="#1E3A5F"/>
+                                <TextBlock TextWrapping="Wrap" FontSize="11"
+                                           Foreground="#666">
+                                    O Windows pode mostrar legendas em tempo 
+                                    real para qualquer som que tocar no 
+                                    computador — inclusive vídeos e chamadas.
+                                </TextBlock>
+                            </StackPanel>
+                            <Button Grid.Column="1" Content="Configurar"
+                                    Width="110" Height="32"
+                                    Style="{StaticResource CardButtonStyle}"
+                                    Click="AbrirLegendas_Click"
+                                    VerticalAlignment="Center"/>
+                        </Grid>
+
+                        <Separator Background="#EEE" Margin="0,0,0,12"/>
+
+                        <!-- Alertas visuais -->
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel>
+                                <TextBlock Text="⚡ Alertas Visuais"
+                                           FontSize="13" FontWeight="Bold"
+                                           Foreground="#1E3A5F"/>
+                                <TextBlock TextWrapping="Wrap" FontSize="11"
+                                           Foreground="#666">
+                                    Faz a tela piscar no lugar de emitir som 
+                                    para alertas — útil para quem não ouve bem.
+                                </TextBlock>
+                            </StackPanel>
+                            <Button Grid.Column="1" Content="Configurar"
+                                    Width="110" Height="32"
+                                    Style="{StaticResource CardButtonStyle}"
+                                    Click="AbrirAlertasVisuais_Click"
+                                    VerticalAlignment="Center"/>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <Separator Background="#DDD" Margin="0,10,0,20"/>
+
+                <!-- SEÇÃO: Mobilidade -->
+                <TextBlock Text="🖐️ Mobilidade — Usar com Mais Facilidade"
+                           FontSize="15" FontWeight="Bold"
+                           Foreground="#1E3A5F" Margin="0,0,0,5"/>
+                <TextBlock TextWrapping="Wrap" Foreground="#555"
+                           FontSize="12" Margin="0,0,0,12">
+                    Se você tem dificuldade de usar o mouse ou o teclado, 
+                    estas ferramentas podem facilitar muito o dia a dia.
+                </TextBlock>
+
+                <Border Background="White" CornerRadius="10"
+                        Padding="15" Margin="0,0,0,8">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="6" ShadowDepth="1" Opacity="0.1"/>
+                    </Border.Effect>
+                    <StackPanel>
+
+                        <!-- Teclado na Tela -->
+                        <Grid Margin="0,0,0,12">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel>
+                                <TextBlock Text="⌨️ Teclado na Tela"
+                                           FontSize="13" FontWeight="Bold"
+                                           Foreground="#1E3A5F"/>
+                                <TextBlock TextWrapping="Wrap" FontSize="11"
+                                           Foreground="#666">
+                                    Mostra um teclado na tela que você clica 
+                                    com o mouse. Ótimo se o teclado físico 
+                                    não funciona ou é difícil de usar.
+                                </TextBlock>
+                            </StackPanel>
+                            <Button Grid.Column="1" Content="Abrir"
+                                    Width="110" Height="32"
+                                    Style="{StaticResource CardButtonStyle}"
+                                    Click="AbrirTecladoTela_Click"
+                                    VerticalAlignment="Center"/>
+                        </Grid>
+
+                        <Separator Background="#EEE" Margin="0,0,0,12"/>
+
+                        <!-- Teclas de Aderência -->
+                        <Grid Margin="0,0,0,12">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel>
+                                <TextBlock Text="📌 Teclas de Aderência"
+                                           FontSize="13" FontWeight="Bold"
+                                           Foreground="#1E3A5F"/>
+                                <TextBlock TextWrapping="Wrap" FontSize="11"
+                                           Foreground="#666">
+                                    Permite usar atalhos como Ctrl+Alt+Del 
+                                    pressionando uma tecla de cada vez, 
+                                    sem precisar segurar todas ao mesmo tempo.
+                                </TextBlock>
+                            </StackPanel>
+                            <Button Grid.Column="1" Content="Configurar"
+                                    Width="110" Height="32"
+                                    Style="{StaticResource CardButtonStyle}"
+                                    Click="AbrirTeclasAderencia_Click"
+                                    VerticalAlignment="Center"/>
+                        </Grid>
+
+                        <Separator Background="#EEE" Margin="0,0,0,12"/>
+
+                        <!-- Narrador -->
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel>
+                                <TextBlock Text="🔈 Narrador (Leitor de Tela)"
+                                           FontSize="13" FontWeight="Bold"
+                                           Foreground="#1E3A5F"/>
+                                <TextBlock TextWrapping="Wrap" FontSize="11"
+                                           Foreground="#666">
+                                    O computador lê em voz alta o que está 
+                                    na tela — textos, botões, menus. 
+                                    Essencial para quem tem dificuldade visual.
+                                </TextBlock>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                <Button Content="Ativar" Width="110" Height="32"
+                                        Style="{StaticResource CardButtonStyle}"
+                                        Click="AtivarNarrador_Click"
+                                        Margin="0,0,0,4"/>
+                                <Button Content="Desativar" Width="110" Height="32"
+                                        Style="{StaticResource CardButtonStyle}"
+                                        Click="DesativarNarrador_Click"/>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <Separator Background="#DDD" Margin="0,10,0,20"/>
+
+                <!-- SEÇÃO: Central de Acessibilidade -->
+                <TextBlock Text="⚙️ Todas as Opções de Acessibilidade"
+                           FontSize="15" FontWeight="Bold"
+                           Foreground="#1E3A5F" Margin="0,0,0,5"/>
+                <TextBlock TextWrapping="Wrap" Foreground="#555"
+                           FontSize="12" Margin="0,0,0,12">
+                    O Windows tem ainda mais recursos de acessibilidade 
+                    que podem ser úteis para diferentes necessidades. 
+                    Clique abaixo para ver todas as opções disponíveis.
+                </TextBlock>
+                <Button Content="♿  Ver Todas as Opções de Acessibilidade"
+                        Width="310" Height="38"
+                        HorizontalAlignment="Left"
+                        Style="{StaticResource CardButtonStyle}"
+                        Click="AbrirCentralAcessibilidade_Click"
+                        Margin="0,0,0,10"/>
+
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>

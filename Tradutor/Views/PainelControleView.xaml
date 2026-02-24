@@ -214,6 +214,38 @@
                 Click="AbrirSeguranca_Click"/>
                     </StackPanel>
                 </Border>
+                <!-- Cartão: Inicialização -->
+                <Border Style="{StaticResource CardStyle}" Height="195">
+                    <StackPanel>
+                        <TextBlock Text="🚀" FontSize="32" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Inicialização"
+                   FontSize="14" FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   Foreground="#1E3A5F" Margin="0,8,0,4"/>
+                        <TextBlock Text="Controle o que abre automaticamente quando o computador liga"
+                   FontSize="11" Foreground="#666"
+                   TextAlignment="Center" TextWrapping="Wrap"/>
+                        <Button Content="Abrir" Margin="0,12,0,0"
+                Style="{StaticResource CardButtonStyle}"
+                Click="AbrirInicializacao_Click"/>
+                    </StackPanel>
+                </Border>
+                <!-- Cartão: Acessibilidade -->
+                <Border Style="{StaticResource CardStyle}" Height="195">
+                    <StackPanel>
+                        <TextBlock Text="♿" FontSize="32" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Acessibilidade"
+                   FontSize="14" FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   Foreground="#1E3A5F" Margin="0,8,0,4"/>
+                        <TextBlock Text="Recursos para facilitar o uso do computador para todos"
+                   FontSize="11" Foreground="#666"
+                   TextAlignment="Center" TextWrapping="Wrap"/>
+                        <Button Content="Abrir" Margin="0,12,0,0"
+                Style="{StaticResource CardButtonStyle}"
+                Click="AbrirAcessibilidade_Click"/>
+                    </StackPanel>
+                </Border>
             </WrapPanel>
         </StackPanel>
     </ScrollViewer>

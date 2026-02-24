@@ -1,0 +1,80 @@
+﻿<Window x:Class="Tradutor.Views.InicializacaoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="🚀 Inicialização do Computador"
+        Height="650" Width="750"
+        WindowStartupLocation="CenterScreen"
+        Background="#F0F4F8"
+        ResizeMode="NoResize">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="65"/>
+        </Grid.RowDefinitions>
+
+        <!-- Cabeçalho -->
+        <Border Grid.Row="0" Background="#1E3A5F">
+            <StackPanel VerticalAlignment="Center" Margin="25,0">
+                <TextBlock Text="🚀 Inicialização do Computador"
+                           FontSize="20" FontWeight="Bold" Foreground="White"/>
+                <TextBlock Text="Veja e controle o que abre quando o computador liga"
+                           FontSize="11" Foreground="#A8C4E0"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Status -->
+        <Border Grid.Row="1" Background="#E8F0F8" Padding="15,10">
+            <StackPanel>
+                <TextBlock x:Name="LblStatus"
+                           Text="🔍 Lendo os programas de inicialização..."
+                           FontSize="12" Foreground="#1E3A5F"/>
+                <ProgressBar x:Name="BarraProgresso"
+                             Height="6" Margin="0,6,0,0"
+                             IsIndeterminate="True"
+                             Background="#DDD" Foreground="#1E3A5F"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Lista -->
+        <Border Grid.Row="2" Margin="15,10,15,0">
+            <ListView x:Name="ListaProgramas"
+                      Background="White"
+                      BorderThickness="0"
+                      ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Status" Width="70"
+                                        DisplayMemberBinding="{Binding IconeStatus}"/>
+                        <GridViewColumn Header="Programa" Width="220"
+                                        DisplayMemberBinding="{Binding Nome}"/>
+                        <GridViewColumn Header="O que faz" Width="280"
+                                        DisplayMemberBinding="{Binding Descricao}"/>
+                        <GridViewColumn Header="Impacto" Width="100"
+                                        DisplayMemberBinding="{Binding Impacto}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Border>
+
+        <!-- Rodapé -->
+        <Border Grid.Row="3" Background="White" Padding="15,0">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="8" ShadowDepth="-2" Opacity="0.08"/>
+            </Border.Effect>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <Button Content="✅  Ativar Selecionado" Width="180" Height="38"
+                        Style="{StaticResource CardButtonStyle}"
+                        Click="AtivarPrograma_Click" Margin="0,0,8,0"/>
+                <Button Content="⛔  Desativar Selecionado" Width="190" Height="38"
+                        Style="{StaticResource CardButtonStyle}"
+                        Click="DesativarPrograma_Click" Margin="0,0,8,0"/>
+                <Button Content="⚙️  Gerenciador Avançado" Width="190" Height="38"
+                        Style="{StaticResource CardButtonStyle}"
+                        Click="AbrirGerenciador_Click"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
