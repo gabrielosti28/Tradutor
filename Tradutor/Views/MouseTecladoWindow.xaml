@@ -28,12 +28,12 @@
 
                 <!-- SEÇÃO: Velocidade do Mouse -->
                 <TextBlock Text="🖱️ Velocidade do Mouse"
-                           FontSize="15" FontWeight="Bold"
-                           Foreground="#1E3A5F" Margin="0,0,0,5"/>
+           FontSize="15" FontWeight="Bold"
+           Foreground="#1E3A5F" Margin="0,0,0,5"/>
                 <TextBlock TextWrapping="Wrap" Foreground="#555" FontSize="12" Margin="0,0,0,12">
-                    A velocidade do mouse controla o quanto o cursor se move na tela 
-                    quando você mexe o mouse. Se o cursor está se movendo rápido demais 
-                    ou devagar demais, ajuste aqui.
+    A velocidade do mouse controla o quanto o cursor se move na tela 
+    quando você mexe o mouse. Escolha abaixo o que melhor se encaixa 
+    para você.
                 </TextBlock>
 
                 <Border Background="White" CornerRadius="10" Padding="20" Margin="0,0,0,8">
@@ -41,27 +41,28 @@
                         <DropShadowEffect BlurRadius="6" ShadowDepth="1" Opacity="0.1"/>
                     </Border.Effect>
                     <StackPanel>
-                        <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
-                            <TextBlock Text="🐢" FontSize="18" VerticalAlignment="Center"/>
-                            <Slider x:Name="SliderMouse"
-                                    Minimum="1" Maximum="20" Value="10"
-                                    Width="370" Margin="12,0"
-                                    VerticalAlignment="Center"
-                                    ValueChanged="SliderMouse_ValueChanged"/>
-                            <TextBlock Text="🐇" FontSize="18" VerticalAlignment="Center"/>
-                        </StackPanel>
                         <TextBlock x:Name="LblMouse"
-                                   Text="Velocidade atual: Média"
-                                   FontSize="12" Foreground="#555"
-                                   HorizontalAlignment="Center"/>
+                   Text="Escolha uma velocidade abaixo:"
+                   FontSize="12" Foreground="#555"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,12"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Button Content="🐢  Lento" Width="120" Height="38"
+                    Style="{StaticResource CardButtonStyle}"
+                    Click="VelocidadeLenta_Click" Margin="0,0,8,0"/>
+                            <Button Content="👆  Médio" Width="120" Height="38"
+                    Style="{StaticResource CardButtonStyle}"
+                    Click="VelocidadeMedia_Click" Margin="0,0,8,0"/>
+                            <Button Content="🐇  Rápido" Width="120" Height="38"
+                    Style="{StaticResource CardButtonStyle}"
+                    Click="VelocidadeRapida_Click"/>
+                        </StackPanel>
                     </StackPanel>
                 </Border>
                 <Button Content="⚙️  Mais opções de Mouse" Width="210" Height="38"
-                        HorizontalAlignment="Left"
-                        Style="{StaticResource CardButtonStyle}"
-                        Click="MaisOpcoesMouse_Click" Margin="0,8,0,20"/>
-
-                <Separator Background="#DDD" Margin="0,0,0,20"/>
+        HorizontalAlignment="Left"
+        Style="{StaticResource CardButtonStyle}"
+        Click="MaisOpcoesMouse_Click" Margin="0,8,0,20"/>
 
                 <!-- SEÇÃO: Botão Principal do Mouse -->
                 <TextBlock Text="👆 Botão Principal do Mouse"

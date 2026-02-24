@@ -123,27 +123,13 @@
 
                 <Separator Background="#DDD" Margin="0,0,0,20"/>
 
-                <!-- SEÇÃO: Tela -->
-                <TextBlock Text="🖥️ Quando a Tela se Apaga"
-                           FontSize="15" FontWeight="Bold"
-                           Foreground="#1E3A5F" Margin="0,0,0,5"/>
+                <!-- SEÇÃO: Tela, Suspender e Hibernar (UNIFICADO) -->
+                <TextBlock Text="🖥️ Tela, Suspender e Hibernar"
+           FontSize="15" FontWeight="Bold"
+           Foreground="#1E3A5F" Margin="0,0,0,5"/>
                 <TextBlock TextWrapping="Wrap" Foreground="#555" FontSize="12" Margin="0,0,0,12">
-                    Se você parar de usar o computador por alguns minutos, 
-                    a tela se apaga automaticamente para economizar energia. 
-                    Isso é normal! Basta mover o mouse ou pressionar uma tecla 
-                    para ela voltar. Aqui você define quanto tempo esperar.
+    Aqui você controla o que acontece quando o computador fica sem uso por alguns minutos.
                 </TextBlock>
-                <Button Content="🖥️  Ajustar Tempo da Tela" Width="230" Height="38"
-                        HorizontalAlignment="Left"
-                        Style="{StaticResource CardButtonStyle}"
-                        Click="AjustarTela_Click" Margin="0,0,0,20"/>
-
-                <Separator Background="#DDD" Margin="0,0,0,20"/>
-
-                <!-- SEÇÃO: Suspender e Hibernar -->
-                <TextBlock Text="😴 Suspender e Hibernar"
-                           FontSize="15" FontWeight="Bold"
-                           Foreground="#1E3A5F" Margin="0,0,0,5"/>
 
                 <Border Background="White" CornerRadius="10" Padding="15" Margin="0,0,0,15">
                     <Border.Effect>
@@ -151,28 +137,31 @@
                     </Border.Effect>
                     <StackPanel>
                         <TextBlock TextWrapping="Wrap" FontSize="12" Foreground="#444" Margin="0,0,0,8">
-                            <Bold>😴 Suspender</Bold> — O computador fica em "modo soneca". 
-                            Ele para quase tudo mas lembra o que você estava fazendo. 
-                            Liga rápido quando você voltar.
+            <Bold>🖥️ Apagar a tela</Bold> — A tela se apaga sozinha após alguns minutos 
+            sem uso para economizar energia. Basta mover o mouse ou pressionar 
+            uma tecla para ela voltar. Você define quanto tempo esperar.
                         </TextBlock>
                         <TextBlock TextWrapping="Wrap" FontSize="12" Foreground="#444" Margin="0,0,0,8">
-                            <Bold>💤 Hibernar</Bold> — Parecido com suspender, mas salva tudo 
-                            no HD e desliga de verdade. Demora um pouco mais para ligar, 
-                            mas não gasta energia nenhuma enquanto espera.
+            <Bold>😴 Suspender</Bold> — O computador fica em "modo soneca". 
+            Para quase tudo mas lembra o que você estava fazendo. 
+            Liga rápido quando você voltar.
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap" FontSize="12" Foreground="#444" Margin="0,0,0,8">
+            <Bold>💤 Hibernar</Bold> — Parecido com suspender, mas salva tudo 
+            no HD e desliga de verdade. Não gasta energia nenhuma enquanto espera.
                         </TextBlock>
                         <TextBlock TextWrapping="Wrap" FontSize="12" Foreground="#444">
-                            <Bold>⭕ Desligar</Bold> — Fecha tudo e desliga completamente. 
-                            Use quando não for usar o computador por muitas horas.
+            <Bold>⭕ Desligar</Bold> — Fecha tudo e desliga completamente. 
+            Use quando não for usar o computador por muitas horas.
                         </TextBlock>
                     </StackPanel>
                 </Border>
 
-                <Button Content="😴  Ajustar Suspender e Hibernar" Width="260" Height="38"
-                        HorizontalAlignment="Left"
-                        Style="{StaticResource CardButtonStyle}"
-                        Click="AjustarSuspender_Click" Margin="0,0,0,20"/>
+                <Button Content="🖥️  Ajustar Tela, Suspender e Hibernar" Width="290" Height="38"
+        HorizontalAlignment="Left"
+        Style="{StaticResource CardButtonStyle}"
+        Click="AjustarTela_Click" Margin="0,0,0,20"/>
 
-                <Separator Background="#DDD" Margin="0,0,0,20"/>
                 <Separator Background="#DDD" Margin="0,0,0,20"/>
 
                 <!-- SEÇÃO: Manter Acordado -->
