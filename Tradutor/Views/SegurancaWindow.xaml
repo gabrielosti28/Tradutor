@@ -1,0 +1,201 @@
+﻿<Window x:Class="Tradutor.Views.SegurancaWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="🛡️ Segurança do Computador"
+        Height="650" Width="700"
+        WindowStartupLocation="CenterScreen"
+        Background="#F0F4F8"
+        ResizeMode="NoResize">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Cabeçalho -->
+        <Border Grid.Row="0" Background="#1E3A5F">
+            <StackPanel VerticalAlignment="Center" Margin="25,0">
+                <TextBlock Text="🛡️ Segurança do Computador"
+                           FontSize="20" FontWeight="Bold" Foreground="White"/>
+                <TextBlock Text="Veja se o seu computador está protegido"
+                           FontSize="11" Foreground="#A8C4E0"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Status geral -->
+        <Border Grid.Row="1" x:Name="BannerStatus"
+                Background="#E8F5E9" Padding="15,12">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock x:Name="IconeStatus" Text="🔍"
+                           FontSize="22" VerticalAlignment="Center"
+                           Margin="0,0,12,0"/>
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock x:Name="LblStatusGeral"
+                               Text="Verificando a segurança do seu computador..."
+                               FontSize="13" FontWeight="Bold"
+                               Foreground="#1E3A5F"/>
+                    <TextBlock x:Name="LblStatusDetalhe"
+                               Text="Aguarde um momento."
+                               FontSize="11" Foreground="#555"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        <!-- Conteúdo -->
+        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+            <StackPanel Margin="25,20">
+
+                <!-- SEÇÃO: Antivírus -->
+                <TextBlock Text="🦠 Proteção contra Vírus"
+                           FontSize="15" FontWeight="Bold"
+                           Foreground="#1E3A5F" Margin="0,0,0,5"/>
+                <TextBlock TextWrapping="Wrap" Foreground="#555"
+                           FontSize="12" Margin="0,0,0,12">
+                    Um vírus é um programa malicioso que pode roubar suas senhas, 
+                    apagar seus arquivos ou deixar seu computador lento. 
+                    O antivírus age como um guarda que bloqueia essas ameaças 
+                    antes que causem dano.
+                </TextBlock>
+
+                <Border x:Name="CartaoAntivirus" Background="White"
+                        CornerRadius="10" Padding="15" Margin="0,0,0,8">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="6" ShadowDepth="1" Opacity="0.1"/>
+                    </Border.Effect>
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+                            <TextBlock x:Name="IconeAntivirus" Text="🔍"
+                                       FontSize="20" VerticalAlignment="Center"
+                                       Margin="0,0,10,0"/>
+                            <StackPanel>
+                                <TextBlock x:Name="LblAntivirus"
+                                           Text="Verificando..."
+                                           FontSize="13" FontWeight="Bold"
+                                           Foreground="#1E3A5F"/>
+                                <TextBlock x:Name="LblAntivirusDetalhe"
+                                           Text="Aguarde"
+                                           FontSize="11" Foreground="#666"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+                    <Button Content="🛡️  Abrir Windows Defender" Width="220" Height="38"
+                            Style="{StaticResource CardButtonStyle}"
+                            Click="AbrirDefender_Click" Margin="0,0,10,0"/>
+                    <Button Content="🔍  Fazer Varredura Agora" Width="200" Height="38"
+                            Style="{StaticResource CardButtonStyle}"
+                            Click="FazerVarredura_Click"/>
+                </StackPanel>
+
+                <Separator Background="#DDD" Margin="0,0,0,20"/>
+
+                <!-- SEÇÃO: Firewall -->
+                <TextBlock Text="🔥 Firewall (Barreira de Proteção)"
+                           FontSize="15" FontWeight="Bold"
+                           Foreground="#1E3A5F" Margin="0,0,0,5"/>
+                <TextBlock TextWrapping="Wrap" Foreground="#555"
+                           FontSize="12" Margin="0,0,0,12">
+                    O Firewall é como uma porta com segurança na entrada do seu 
+                    computador. Ele controla quem pode entrar e sair pela internet, 
+                    bloqueando tentativas de invasão automáticas.
+                </TextBlock>
+
+                <Border x:Name="CartaoFirewall" Background="White"
+                        CornerRadius="10" Padding="15" Margin="0,0,0,8">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="6" ShadowDepth="1" Opacity="0.1"/>
+                    </Border.Effect>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock x:Name="IconeFirewall" Text="🔍"
+                                   FontSize="20" VerticalAlignment="Center"
+                                   Margin="0,0,10,0"/>
+                        <StackPanel>
+                            <TextBlock x:Name="LblFirewall"
+                                       Text="Verificando..."
+                                       FontSize="13" FontWeight="Bold"
+                                       Foreground="#1E3A5F"/>
+                            <TextBlock x:Name="LblFirewallDetalhe"
+                                       Text="Aguarde"
+                                       FontSize="11" Foreground="#666"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+                    <Button Content="🔥  Abrir Configurações do Firewall" Width="260" Height="38"
+                            Style="{StaticResource CardButtonStyle}"
+                            Click="AbrirFirewall_Click" Margin="0,0,10,0"/>
+                    <Button Content="✅  Ativar Firewall" Width="160" Height="38"
+                            Style="{StaticResource CardButtonStyle}"
+                            Click="AtivarFirewall_Click"/>
+                </StackPanel>
+
+                <Separator Background="#DDD" Margin="0,0,0,20"/>
+
+                <!-- SEÇÃO: Atualizações -->
+                <TextBlock Text="🔄 Atualizações do Windows"
+                           FontSize="15" FontWeight="Bold"
+                           Foreground="#1E3A5F" Margin="0,0,0,5"/>
+                <TextBlock TextWrapping="Wrap" Foreground="#555"
+                           FontSize="12" Margin="0,0,0,12">
+                    As atualizações do Windows corrigem falhas de segurança que 
+                    hackers poderiam usar para invadir seu computador. 
+                    Manter o Windows atualizado é uma das coisas mais importantes 
+                    que você pode fazer para se proteger.
+                </TextBlock>
+
+                <Border x:Name="CartaoAtualizacoes" Background="White"
+                        CornerRadius="10" Padding="15" Margin="0,0,0,8">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="6" ShadowDepth="1" Opacity="0.1"/>
+                    </Border.Effect>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock x:Name="IconeAtualizacoes" Text="🔍"
+                                   FontSize="20" VerticalAlignment="Center"
+                                   Margin="0,0,10,0"/>
+                        <StackPanel>
+                            <TextBlock x:Name="LblAtualizacoes"
+                                       Text="Verificando..."
+                                       FontSize="13" FontWeight="Bold"
+                                       Foreground="#1E3A5F"/>
+                            <TextBlock x:Name="LblAtualizacoesDetalhe"
+                                       Text="Aguarde"
+                                       FontSize="11" Foreground="#666"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
+                <Button Content="🔄  Verificar Atualizações Agora" Width="250" Height="38"
+                        HorizontalAlignment="Left"
+                        Style="{StaticResource CardButtonStyle}"
+                        Click="AbrirAtualizacoes_Click" Margin="0,0,0,20"/>
+
+                <Separator Background="#DDD" Margin="0,0,0,20"/>
+
+                <!-- SEÇÃO: Senhas e Conta -->
+                <TextBlock Text="🔑 Senhas e Conta"
+                           FontSize="15" FontWeight="Bold"
+                           Foreground="#1E3A5F" Margin="0,0,0,5"/>
+                <TextBlock TextWrapping="Wrap" Foreground="#555"
+                           FontSize="12" Margin="0,0,0,12">
+                    Proteger o seu computador com senha impede que outras pessoas 
+                    acessem seus arquivos e fotos pessoais quando você não está 
+                    por perto. É como colocar uma tranca na porta da sua casa.
+                </TextBlock>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <Button Content="🔑  Alterar Senha do Computador" Width="240" Height="38"
+                            Style="{StaticResource CardButtonStyle}"
+                            Click="AlterarSenha_Click" Margin="0,0,10,0"/>
+                    <Button Content="👤  Gerenciar Contas" Width="180" Height="38"
+                            Style="{StaticResource CardButtonStyle}"
+                            Click="GerenciarContas_Click"/>
+                </StackPanel>
+
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>
